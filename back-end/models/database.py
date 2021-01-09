@@ -14,6 +14,7 @@ class Users(db.Model):
     location = db.Column(db.String(50), nullable=True)
     password = db.Column(db.String(60), nullable=False)
     is_provider = db.Column(db.Boolean, nullable=False)
+    token = db.Column(db.String(120), nullable=True)
 
     def __init__(self, **kwargs):
         super(Users, self).__init__(**kwargs)
