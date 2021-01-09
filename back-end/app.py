@@ -32,26 +32,26 @@ def index():
 
 @app.route("/signup", methods=["POST"])
 def signup():
-
     user_data = request.get_json()
-    name = user_data.get("name")
-    phone = user_data.get("phone")
-    location = user_data.get("location")
-    role = user_data.get("role")
-    password = user_data.get("password")
-    role = get_bool_role(role)
+    if user_data:
+        name = user_data.get("name")
+        phone = user_data.get("phone")
+        location = user_data.get("location")
+        role = user_data.get("role")
+        password = user_data.get("password")
+        role = get_bool_role(role)
 
-    if all(name, phone, location, role):
-        new_user = Users(
-            name=name,
-            phone=phone,
-            location=location,
-            is_provider=role,
-            password=password,
-        )
-        db.session.add(new_user)
-        db.session.commit()
-        return {"user_added": True}
+        if all(name, phone, location, role):
+            new_user = Users(
+                name=name,
+                phone=phone,
+                location=location,
+                is_provider=role,
+                password=password,
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            return {"user_added": True}
     return {"user_added": False}
 
 
