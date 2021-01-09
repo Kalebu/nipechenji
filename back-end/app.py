@@ -57,7 +57,15 @@ def signup():
 
 @app.route("/signin")
 def signin():
-    return {"action": "signin"}
+    signin_data = request.get_json()
+    if signin_data:
+        phone = signin_data.get("phone")
+        password = signin_data.get("password")
+
+        user_exists = Users.query.filter_by(phone=phone).first()
+        if user_exists.is_authenticated(password):
+            return {"loggedin": True}
+    return {"loggedin": False}
 
 
 if __name__ == "__main__":
