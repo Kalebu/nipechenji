@@ -21,3 +21,43 @@ class Users(db.Model):
 
     def is_authenticated(self, new_password):
         return hashlib.sha256(new_password).hexdigest() == self.password
+
+    def __repr__(self):
+        return "<User> {}".format(self.name)
+
+    def __str__(self):
+        return "<User> {}".format(self.name)
+
+
+class Consumer(db.Model):
+    __tablename__ = "consumers"
+
+    consumer_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    phone = db.Column(db.String(50), db.ForeignKey("users.phone"))
+    amount = db.Column(db.Float, nullable=False)
+    location = db.Column(db.String(50), nullable=False)
+    amepeta_chenji = db.Column(db.Boolean, default=False)
+    users = db.relationship(Users)
+
+    def __repr__(self):
+        return "<Consumer> {}".format(self.consumer_id)
+
+    def __str__(self):
+        return "<Consumer> {}".format(self.consumer_id)
+
+
+class Provider(db.Model):
+    __tablename__ = "provider"
+
+    provider_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
+    phone = db.Column(db.String(50), db.ForeignKey("users.phone"))
+    ana_chenji = db.Column(db.Boolean, nullable=False)
+    users = db.relationship(Users)
+
+    def __repr__(self):
+        return "<Provider> {}".format(self.provider_id)
+
+    def __str__(self):
+        return "<Provider> {}".format(self.provider_id)
