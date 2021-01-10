@@ -113,7 +113,7 @@ def add_consumer():
 
 @app.route("/load-all-consumers", methods=["GET", "POST"])
 def load_all_consumers():
-    if request.method == "POST":
+    if request.method == "GET":
         if request.get_json():
             user_data = request.get_json()
             token = user_data["token"]
