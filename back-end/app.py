@@ -1,6 +1,7 @@
 import os
 import random
 import hashlib
+from flask_cors import CORS
 from flask import Flask, request
 from models.database import db, Users, Provider, Consumer
 
@@ -9,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = "codesucks"
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
+CORS(app)
 db.init_app(app)
 
 
