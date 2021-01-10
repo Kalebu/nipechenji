@@ -111,6 +111,22 @@ def add_consumer():
     return {"reponse": False}
 
 
+@app.route("/load-all-consumers", methods=["GET", "POST"])
+def load_all_consumers():
+    if request.method == "POST":
+        if request.get_json():
+            user_data = request.get_json()
+            token = user_data["token"]
+            if token:
+                user_with_token = Users.query.filter_by(token=token).first()
+                if user_with_token:
+                    all_consumers = Consumer.query.all()
+                    if all_consumers:
+                        return all_consumers.to_json()
+
+    return {}
+
+
 @app.route("/toa-chenji", methods=["GET", "POST"])
 def add_provider():
     if request.method == "POST":
