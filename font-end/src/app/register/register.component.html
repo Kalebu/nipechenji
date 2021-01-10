@@ -1,0 +1,57 @@
+<div class="wrapper">
+
+<header>
+	<a routerLink="/"><h3>Money Changer Register</h3></a>
+	<div class="top-controls">
+		<button mat-raised-button class='register' routerLink="/login">Login</button>
+	</div>
+</header>
+
+<div class="main">
+
+	<form [formGroup]="createMemberForm" (ngSubmit)="saveMember()">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Membership Type</mat-label>
+            <mat-select formControlName="role">
+              <mat-option value="provider">provider</mat-option>
+              <mat-option value="consumer">consumer</mat-option>
+            </mat-select>
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Location</mat-label>
+            <input matInput formControlName="location">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <button style="width: 100%; height: 48px" color="primary"
+                  mat-flat-button>
+            REGISTER
+          </button>
+    </form>
+	
+</div>
+
+
+
+</div>
