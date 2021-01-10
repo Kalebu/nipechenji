@@ -44,7 +44,7 @@ def index():
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     if request.method == "POST":
-        user_data = request.get_json()
+        user_data = request.get_json()["data"]
         print(user_data)
         if user_data:
             name = user_data.get("name")
