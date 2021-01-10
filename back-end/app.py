@@ -54,7 +54,7 @@ def signup():
             password = user_data.get("password")
             role = get_bool_role(role)
 
-            if all(name, phone, location, role):
+            if all([name, phone, location, role]):
                 new_user = Users(
                     name=name,
                     phone=phone,
