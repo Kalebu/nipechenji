@@ -18,7 +18,7 @@ class Users(db.Model):
 
     def __init__(self, **kwargs):
         super(Users, self).__init__(**kwargs)
-        self.password = hashlib.sha256(self.password).hexdigest()
+        self.password = hashlib.sha256(self.password.encode("utf-8")).hexdigest()
 
     def is_authenticated(self, new_password):
         return hashlib.sha256(new_password.encode("utf-8")).hexdigest() == self.password
