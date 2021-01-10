@@ -30,8 +30,10 @@ initialize_db()
 
 
 def get_bool_role(role):
-    role_maper = {"provider": True, "consumer": False}
-    return role_maper.get(role.lower())
+    if isinstance(role, str):
+        role_maper = {"provider": True, "consumer": False}
+        return role_maper.get(role.lower())
+    raise TypeError("{} should be string not {}".format(role, type(role)))
 
 
 @app.route("/")
