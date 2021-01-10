@@ -72,7 +72,7 @@ def signup():
 def signin():
     if request.method == "POST":
 
-        signin_data = request.get_json()
+        signin_data = request.get_json()["data"]
         if signin_data:
             phone = signin_data.get("phone")
             password = signin_data.get("password")
@@ -91,7 +91,7 @@ def add_consumer():
     if request.method == "POST":
 
         if request.get_json():
-            consumer_data = request.get_json()
+            consumer_data = request.get_json()["data"]
             token = consumer_data.get("token")
             if token:
                 user_with_token = Users.query.filter_by(token=token).first()
@@ -114,7 +114,7 @@ def add_consumer():
 def add_provider():
     if request.method == "POST":
         if request.get_json():
-            provider_data = request.get_json()
+            provider_data = request.get_json()['data']
             token = provider_data.get("token")
             if token:
                 user_with_token = Users.query.filter_by(token=token).first()
