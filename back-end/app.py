@@ -45,6 +45,7 @@ def index():
 def signup():
     if request.method == "POST":
         user_data = request.get_json()
+        print(user_data)
         if user_data:
             name = user_data.get("name")
             phone = user_data.get("phone")
