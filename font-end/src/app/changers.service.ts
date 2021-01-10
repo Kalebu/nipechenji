@@ -17,9 +17,18 @@ export class ChangersService {
   }
 
   login(details: any): Observable<any> {
-    
     const url = 'http://127.0.0.1:5000/signin';
     return this.http.post(url, {data: details});
+  }
+
+  addConsumer(details: any): Observable<any> {
+    const url = 'http://127.0.0.1:5000/add-consumer';
+    return this.http.post(url, {data: details});
+  }
+
+  loadAll(details: any): Observable<any> {
+    const url = 'http://127.0.0.1:5000/load-all-consumers';
+    return this.http.get(url);
   }
 
 }
