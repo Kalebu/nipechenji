@@ -123,7 +123,7 @@ def load_all_consumers():
                 if user_with_token:
                     all_consumers = Consumer.query.all()
                     if all_consumers:
-                        return all_consumers.to_json()
+                        return all_consumers
 
     return {}
 
