@@ -77,12 +77,13 @@ def signin():
             phone = signin_data.get("phone")
             password = signin_data.get("password")
             user_exists = Users.query.filter_by(phone=phone).first()
-            if user_exists.is_authenticated(password):
-                token = create_token_string()
-                user_exists.token = token
-                db.session.add(user_exists)
-                db.session.commit()
-                return {"Token": token}
+            if user_exists:
+                if user_exists.is_authenticated(password):
+                    token = create_token_string()
+                    user_exists.token = token
+                    db.session.add(user_exists)
+                    db.session.commit()
+                    return {"Token": token}
     return {"response": False}
 
 
@@ -114,7 +115,7 @@ def add_consumer():
 def add_provider():
     if request.method == "POST":
         if request.get_json():
-            provider_data = request.get_json()['data']
+            provider_data = request.get_json()["data"]
             token = provider_data.get("token")
             if token:
                 user_with_token = Users.query.filter_by(token=token).first()
