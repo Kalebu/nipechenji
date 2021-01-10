@@ -11,6 +11,7 @@ import { ChangersService } from '../changers.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
+
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
         if (data) {
           //console.log(data);
           localStorage.setItem('token', data['Token']);
-          console.log(localStorage.getItem('Token'));
+          console.log(localStorage.getItem('token'));
         }   
       });
   }
