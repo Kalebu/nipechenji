@@ -1,0 +1,35 @@
+<div class="wrapper">
+
+<header>
+	<a routerLink="/"><h3>Money Changer Login</h3></a>
+	<div class="top-controls">
+		<button mat-raised-button class='register' routerLink="/register">Register</button>
+	</div>
+</header>
+
+<div class="main">
+
+	<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password">
+            <mat-error>Field required</mat-error>
+          </mat-form-field>
+
+          <button style="width: 100%; height: 48px" color="primary" mat-flat-button>
+            LOGIN
+          </button>
+    </form>
+	
+</div>
+
+
+
+</div>
