@@ -21,7 +21,7 @@ class Users(db.Model):
         self.password = hashlib.sha256(self.password).hexdigest()
 
     def is_authenticated(self, new_password):
-        return hashlib.sha256(new_password).hexdigest() == self.password
+        return hashlib.sha256(new_password.encode("utf-8")).hexdigest() == self.password
 
     def __repr__(self):
         return "<User> {}".format(self.name)
