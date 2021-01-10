@@ -35,7 +35,7 @@ class Consumer(db.Model):
 
     consumer_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    phone = db.Column(db.String(50), db.ForeignKey("users.phone"))
+    phone = db.Column(db.String(50), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     location = db.Column(db.String(50), nullable=False)
     amepeta_chenji = db.Column(db.Boolean, default=False)
