@@ -53,7 +53,7 @@ class Provider(db.Model):
 
     provider_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("users.user_id"))
-    phone = db.Column(db.String(50), db.ForeignKey("users.phone"))
+    phone = db.Column(db.String(50), nullable=False)
     ana_chenji = db.Column(db.Boolean, nullable=False)
     users = db.relationship(Users)
 
