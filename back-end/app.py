@@ -2,7 +2,7 @@ import os
 import random
 import hashlib
 from flask_cors import CORS
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from models.database import db, Users, Provider, Consumer
 
 
@@ -123,7 +123,7 @@ def load_all_consumers():
                 if user_with_token:
                     all_consumers = Consumer.query.all()
                     if all_consumers:
-                        return all_consumers
+                        return jsonify(all_consumers)
 
     return {}
 
